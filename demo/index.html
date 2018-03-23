@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>paper-progress-button demo</title>
+
+  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="../../paper-button/paper-button.html">
+  <link rel="import" href="../../iron-icon/iron-icon.html">
+  <link rel="import" href="../../iron-icons/iron-icons.html">
+  <link rel="import" href="../paper-progress-button.html">
+
+  <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      paper-button {
+        display: inline-block;
+        padding: 5px;
+      }
+
+      iron-icon {
+        padding-right: 8px;
+      }
+    </style>
+  </custom-style>
+</head>
+
+<body>
+  <div class="vertical-section-container centered">
+
+    <h3>Basic paper-progress-button demo</h3>
+    <demo-snippet>
+      <template>
+        <p>
+          Keeps "loading"-State for 5 seconds.
+        </p>
+        <paper-progress-button onclick="startProgress();" raised id="progress"><iron-icon icon="save"></iron-icon>Save</paper-progress-button>
+      </template>
+    </demo-snippet>
+
+    <h3>progress-bar at the bottom and custom loading-text</h3>
+    <demo-snippet>
+      <template>
+        <paper-progress-button loading loading-label="SAVING" bottom>Save</paper-progress-button>
+      </template>
+    </demo-snippet>
+
+  </div>
+
+
+  <script>
+    var progress;
+
+    function startProgress() {
+      progress.loading = true;
+      setTimeout(() => progress.loading = false, 5000);
+    }
+
+    window.addEventListener('WebComponentsReady', function () {
+      progress = document.querySelector('#progress');
+    });
+
+  </script>
+</body>
+
+</html>

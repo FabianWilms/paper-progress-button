@@ -1,0 +1,133 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<link rel="import" href="../paper-progress/paper-progress.html">
+<link rel="import" href="../paper-button/paper-button.html">
+
+<!--
+This is an extension of the paper-button which enables a new property called "loading".
+If the property is set an indeterminate progress-bar will be shown inside the button.
+
+Example:
+    <paper-progress-button></paper-progress-button>
+
+### Styling paper-progress-button and it's children:
+To change the design of the paper-progress-bar use this mixin:
+    paper-progress {
+       --paper-progress-bar-mixin: {};
+    }
+To change the design of the paper-button use this mixin:
+    paper-progress {
+      --paper-button-mixin: {};
+    }
+
+Please refer to the documentation of both components for further styling instructions:
+
+https://www.webcomponents.org/element/PolymerElements/paper-progress/
+https://www.webcomponents.org/element/PolymerElements/paper-button/
+
+The following mixins are available for styling:
+Custom property                                  | Description                                     | Default
+-------------------------------------------------|-------------------------------------------------|--------------
+`--paper-progress-bar-mixin`                     | Mixin applied to the inner paper-progress-bar   | `{}`
+`--paper-button-mixin`                           | Mixin applied to the inner paper-button         | `{}`
+@element paper-progress-button
+@demo demo/index.html
+-->
+
+<dom-module id="paper-progress-button">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      paper-progress {
+        position: absolute;
+        left: 0px;
+        max-width: 100%;
+        @apply --paper-progress-mixin;
+      }
+
+      paper-button {
+        @apply --paper-button-mixin;
+      }
+
+      :host:not([bottom]) paper-progress {
+        top: 0px;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+      }
+
+      :host([bottom]) paper-progress {
+        bottom: 0px;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+      }
+    </style>
+
+    <paper-button disabled="{{loading}}" raised="{{raised}}">
+
+      <template is="dom-if" if="{{!loading}}">
+        <slot hidden="{{loading}}"></slot>
+      </template>
+
+      <template is="dom-if" if="{{loading}}">
+        <div>[[loadingLabel]]</div>
+      </template>
+
+      <paper-progress hidden="{{!loading}}" indeterminate="{{loading}}"></paper-progress>
+    </paper-button>
+
+  </template>
+
+  <script>
+    /**
+     * `paper-progress-button`
+     * A paper-button which is enhanced by a progress-bar to give the user immediate feedback of his actions
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class PaperProgressButton extends Polymer.Element {
+      static get is() { return 'paper-progress-button'; }
+      static get properties() {
+        return {
+          /**
+           * If set, the progress-bar will be shown on the bottom of the button. Default is false -> progress-bar on top.
+           */
+          bottom: {
+            type: Boolean,
+            value: false,
+          },
+          /**
+           * If set, the button will be disabled and the progress-bar will be shown.
+           */
+          loading: {
+            type: Boolean,
+            value: false
+          },
+          /**
+           * Text to be displayed while in loading-state. Defaults to "Loading..."
+           */
+          loadingLabel: {
+            type: String,
+            value: "Loading..."
+          },
+          /**
+           * Exposes the raised-attribute of paper-button
+           */
+          raised: {
+            type: Boolean
+          }
+        }
+      };
+
+      toggleLoading() {
+        this.set('loading', !this.loading);
+      }
+    }
+
+    window.customElements.define(PaperProgressButton.is, PaperProgressButton);
+  </script>
+</dom-module>
