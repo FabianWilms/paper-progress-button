@@ -1,6 +1,7 @@
 {
   "name": "paper-progress-button",
   "description": "A paper-button which is enhanced by a progress-bar to give the user immediate feedback of his actions",
+  "homepage":"https://github.com/FabianWilms/paper-progress-button",
   "main": "paper-progress-button.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
