@@ -23,6 +23,15 @@
         padding: 5px;
       }
 
+      .demo {
+        --paper-progress-active-color: #1875d1;
+        --paper-progress-container-color: #00000000;
+        --paper-button-mixin: {
+          background-color: #1976d2;
+          color: white;
+        }
+      }
+
       iron-icon {
         padding-right: 8px;
       }
@@ -39,14 +48,15 @@
         <p>
           Keeps "loading"-State for 5 seconds.
         </p>
-        <paper-progress-button onclick="startProgress();" raised id="progress"><iron-icon icon="save"></iron-icon>Save</paper-progress-button>
+        <paper-progress-button class="demo" onclick="startProgress();" raised id="progress">
+          <iron-icon icon="save"></iron-icon>Save</paper-progress-button>
       </template>
     </demo-snippet>
 
     <h3>progress-bar at the bottom and custom loading-text</h3>
     <demo-snippet>
       <template>
-        <paper-progress-button loading loading-label="SAVING" bottom>Save</paper-progress-button>
+        <paper-progress-button class="demo" loading loading-label="SAVING" bottom>Save</paper-progress-button>
       </template>
     </demo-snippet>
 

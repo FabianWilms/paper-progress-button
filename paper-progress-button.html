@@ -26,10 +26,16 @@ https://www.webcomponents.org/element/PolymerElements/paper-progress/
 https://www.webcomponents.org/element/PolymerElements/paper-button/
 
 The following mixins are available for styling:
-Custom property                                  | Description                                     | Default
--------------------------------------------------|-------------------------------------------------|--------------
-`--paper-progress-bar-mixin`                     | Mixin applied to the inner paper-progress-bar   | `{}`
-`--paper-button-mixin`                           | Mixin applied to the inner paper-button         | `{}`
+
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--loading-background-color` | Background-Color of the button when in loading-state. | `#efefef`
+`--loading-color` | Foreground-Color of the button when in loading-state. | `black`
+`--paper-progress-bar-mixin` | Mixin applied to the inner paper-progress-bar | `{}`
+`--paper-button-mixin` | Mixin applied to the inner paper-button | `{}`
+
+
 @element paper-progress-button
 @demo demo/index.html
 -->
@@ -52,16 +58,21 @@ Custom property                                  | Description                  
         @apply --paper-button-mixin;
       }
 
+      paper-button[disabled] {
+        background-color: var(--loading-background-color, #efefef);
+        color: var(--loading-color, black)
+      }
+
       :host:not([bottom]) paper-progress {
         top: 0px;
-        border-top-left-radius: 25px;
-        border-top-right-radius: 25px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
       }
 
       :host([bottom]) paper-progress {
         bottom: 0px;
-        border-bottom-left-radius: 25px;
-        border-bottom-right-radius: 25px;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
       }
     </style>
 
