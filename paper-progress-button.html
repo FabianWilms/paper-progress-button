@@ -76,17 +76,17 @@ Custom property | Description | Default
       }
     </style>
 
-    <paper-button disabled="{{loading}}" raised="{{raised}}">
+    <paper-button disabled="[[loading]]" raised="{{raised}}">
 
-      <template is="dom-if" if="{{!loading}}">
-        <slot hidden="{{loading}}"></slot>
+      <template is="dom-if" if="[[!loading]]">
+        <slot></slot>
       </template>
 
-      <template is="dom-if" if="{{loading}}">
+      <template is="dom-if" if="[[loading]]">
         <div>[[loadingLabel]]</div>
       </template>
 
-      <paper-progress hidden="{{!loading}}" indeterminate="{{loading}}"></paper-progress>
+      <paper-progress hidden="[[!loading]]" indeterminate="[[loading]]"></paper-progress>
     </paper-button>
 
   </template>
