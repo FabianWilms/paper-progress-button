@@ -1,5 +1,7 @@
 # \<paper-progress-button\>
 
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/FabianWilms/paper-progress-button)
+
 A paper-button which is enhanced by a progress-bar to give the user immediate feedback of his actions
 
 
