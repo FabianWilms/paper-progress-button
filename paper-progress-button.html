@@ -76,7 +76,7 @@ Custom property | Description | Default
       }
     </style>
 
-    <paper-button disabled="[[loading]]" raised="{{raised}}">
+    <paper-button disabled="[[_isDisabled(loading, disabled)]]" raised="{{raised}}">
 
       <template is="dom-if" if="[[!loading]]">
         <slot></slot>
@@ -130,12 +130,28 @@ Custom property | Description | Default
            */
           raised: {
             type: Boolean
+          },
+          /**
+           * Exposes the disabled-attribute of paper-button
+           */
+          disabled: {
+            type: Boolean
           }
         }
       };
 
       toggleLoading() {
         this.set('loading', !this.loading);
+      }
+
+      _isDisabled(loading, disabled) {
+        if(loading) {
+          return true;
+        } else if (disabled) {
+          return true;
+        } else {
+          return false;
+        }
       }
     }
 
