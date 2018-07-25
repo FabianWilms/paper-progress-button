@@ -10,6 +10,8 @@ A paper-button which is enhanced by a progress-bar to give the user immediate fe
 <custom-element-demo>
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="paper-progress-button.html">
     <style is="custom-style">
     </style>
@@ -19,5 +21,5 @@ A paper-button which is enhanced by a progress-bar to give the user immediate fe
 ```
 -->
 ```html
-<paper-progress-button loading></paper-progress-button>
+<paper-progress-button bottom loading-label="I'm loading..." raised loading></paper-progress-button>
 ```
