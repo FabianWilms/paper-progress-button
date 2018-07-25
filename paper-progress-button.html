@@ -59,8 +59,7 @@ Custom property | Description | Default
       }
 
       paper-button[disabled] {
-        background-color: var(--loading-background-color, #efefef);
-        color: var(--loading-color, black)
+        @apply --paper-button-disabled-mixin;
       }
 
       :host:not([bottom]) paper-progress {
@@ -73,6 +72,10 @@ Custom property | Description | Default
         bottom: 0px;
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
+      }
+
+      :host[disabled] {
+        pointer-events: none;
       }
     </style>
 
@@ -145,7 +148,7 @@ Custom property | Description | Default
       }
 
       _isDisabled(loading, disabled) {
-        if(loading) {
+        if (loading) {
           return true;
         } else if (disabled) {
           return true;

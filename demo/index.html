@@ -26,9 +26,15 @@
       .demo {
         --paper-progress-active-color: #1875d1;
         --paper-progress-container-color: #00000000;
+        
         --paper-button-mixin: {
           background-color: #1976d2;
           color: white;
+        }
+
+        --paper-button-disabled-mixin: {
+          background: #efefef;
+          color: black;
         }
       }
 
@@ -63,7 +69,7 @@
     <h3>Disabled paper-progress-button</h3>
     <demo-snippet>
       <template>
-        <paper-progress-button class="demo" disabled>Save</paper-progress-button>
+        <paper-progress-button onclick="test();" class="demo" disabled>Save</paper-progress-button>
       </template>
     </demo-snippet>
 
@@ -72,6 +78,10 @@
 
   <script>
     var progress;
+
+    function test() {
+      console.log("lol");
+    }
 
     function startProgress() {
       progress.loading = true;
